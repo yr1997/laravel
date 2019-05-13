@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jQueryとCSS3でつくるアコーディオン</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<style>
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+.accordion {
+  max-width: 400px;
+  font-family: Lato;
+  margin-bottom: 20px;
+
+  background-color: #ec5366;
+  border-radius: 6px;
+}
+
+.accordion .header {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 40px 0 8px;
+  position: relative;
+  color: #fff;
+  cursor: pointer;
+}
+
+.accordion .header-icon {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  transform: rotate(0deg);
+  transition-duration: 0.3s;
+}
+
+.accordion .body {
+  display: none;
+  background-color: #fff;
+  border: 10px solid #ec5366;
+  padding: 8px;
+  border-top: 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.accordion.show .header-icon {
+  transform: rotate(180deg);
+  transition-duration: 0.3s;
+}
+
+.accordion.purple {
+  background-color: #8c618d;
+}
+
+.accordion.purple .body {
+  border-color: #8c618d;
+}
+</style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+<script>
+"use strict";
+
+$(() => {
+  // クリックイベントハンドラ
+  $(".header").on("click", (e) => {
+    const $target = $(e.target);
+    // $targetから遡って一番近い.accordionを探す
+    const $accordion = $target.closest(".accordion");
+    // $accordionから子要素の.bodyを探す
+    const $accordionBody = $accordion.children(".body");
+
+    // ボディが可視状態か判定する
+    if ($accordionBody.is(":visible")) {
+      // 可視状態の場合
+      $accordion.removeClass("show");
+      $accordionBody.slideUp(150);
+    } else {
+      // 不可視状態の場合
+      $accordion.addClass("show");
+      $accordionBody.slideDown(150);
+    }
+  });
+});
+</script>
+
+  </head>
+  <body>
+    <div class="accordion">
+      <div class="header">
+        HINT
+        <i class="fa fa-2x fa-angle-down header-icon"></i>
+      </div>
+      <div class="body">このブックでは、jQueryとCSS3を利用して簡単なアコーディオンパネルを作成します。
+
+アコーディオンの開閉状態の変化に応じてアイコンを回転させるアニメーションを追加します。</div>
+    </div>
+  </body>
+</html>
+
+<div class="accordion purple">
+  <div class="header">
+    HINT
+    <i class="header-icon fa fa-2x fa-angle-down" aria-hidden="true"></i>
+  </div>
+  <div class="body">purple</div>
+</div>
