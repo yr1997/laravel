@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.heading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  mix-blend-mode: overlay;
+}
+</style>
+
+  </head>
+  <body>
+   
+      <!-- ここに動画のメディアリソースを書くことで、動画が再生されるようになります。 -->
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/T74R5wqW36M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <div class="heading">
+      <h1>夏が恋しい！！</h1>
+      <p>今年の夏は二度と来ない。思いっきり楽しもう！！</p>
+    </div>
+  </body>
+</html>
